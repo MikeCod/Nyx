@@ -117,6 +117,16 @@ It is essential to respect the privacy and security of others and obtain explici
 
 By using this project, you acknowledge and agree to abide by the principles outlined in this disclaimer. If you do not agree with these terms, you are not authorized to use or contribute to this project.
 
+## TODO
+
+- OS Support
+	- Windows
+	- MacOS
+	- FreeBSD
+- Prevent Blacklist
+	- Latency between each call (prevent blacklist)
+	- Define limit, warn after numerous calls
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first

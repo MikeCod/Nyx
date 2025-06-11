@@ -63,13 +63,16 @@ const download = (url, dest, cb) => {
 	});
 };
 
-const { API_TELEGRAM_TOKEN, API_TELEGRAM_ID, API_TELEGRAM_HASH, DEFAULT_INFO_FORMAT, HOME, AUTOSAVE, EDITOR } = process.env;
+const { API_TELEGRAM_TOKEN, API_TELEGRAM_ID, API_TELEGRAM_HASH, DEFAULT_INFO_FORMAT, APPDATA, HOME, AUTOSAVE, EDITOR } = process.env;
 
 const prog = process.argv[1].split(/\\|\//).pop();
 const editor = EDITOR || "vim";
 
 argv.colour = argv.colour !== false;
 const colour = (...args) => !argv.colour ? "" : "\x1b[" + args.join(";") + "m";
+
+
+console.log(process.platform);
 
 const typeColour = v => {
 	if (!argv.colour)
@@ -119,7 +122,7 @@ var WhatsAppClient = null;
 
 async function main() {
 	try {
-		const pathToken = `${HOME}/.local/share/${prog}/auth`;
+		const pathToken = APPDATA || `${HOME}/${process.platform == 'darwin' ? 'Library/Preferences' : ".local/share"}/${prog}/auth`;
 
 		// console.log(process.argv);
 		if (process.argv.length < 3 || argv.h || argv.help || argv["?"]) {
