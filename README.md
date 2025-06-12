@@ -4,37 +4,24 @@
 
 Nyx is a simple reverse phone number lookup.
 
-## Inspected application
+## Setup Inspected Applications
 
-- [x] WhatsApp
-- [x] Telegram
-- [ ] ~~Messenger~~ 
-- [ ] ~~WeChat~~
-- [ ] ~~Kakao Talk~~
+| API | Information | Access | Session location |
+|-|-|-|-|
+| WhatsApp | <ul><li>Type (User/Business)</li><li>Name</li><li>Picture</li><li>About</li><li>Last activity</li></ul> | QR code | <table><thead><tr><th>OS</th><th>Directory</th></tr></thead><tbody><tr><td>Windows</td><td>`%AppData%`</td></tr><tr><td>Linux</td><td>`~/.local/share`</td></tr><tr><td>macOS</td><td>`~/Library/Preferences`</td></tr></tbody></table> |
+| Telegram | <ul><li>Type (User/Business)</li><li>ID</li><li>Bot</li><li>Restriction</li><li>First/last name</li><li>Username</li><li>Verified</li><li>Premium</li><li>Picture</li><li>Language</li><li>Last activity</li></ul> | [**API Token**](https://my.telegram.org/apps) | Environment. See `nyx -e` |
+| ~~Signal~~ |
+| ~~Messenger~~ |
+| ~~WeChat~~ |
+| ~~Kakao Talk~~ |
 
 *~~Striked names~~ mean no reverse phone lookup available*
 
 ## Install
 
 ```sh
-git clone https://github.com/MikeCod/Nyx.git $HOME/.local/share/nyx
-cd $HOME/.local/share/nyx
-npm i
-ln -s $HOME/.local/share/nyx/nyx $HOME/.local/bin/
+npm i -g nyx-lookup
 ```
-
-### Access
-
-***Telegram should be configured in your environment***. Run `nyx -e` to edit
-
-| Application | Access functioning |
-|-|-|
-| WhatsApp | QR code |
-| Telegram | [**API Token**](https://my.telegram.org/apps) |
-
-Once connected, your session will be saved under:
-- Directory `~/.local/share/nyx/auth` for WhatsApp
-- Env variable `API_TELEGRAM_TOKEN` for Telegram
 
 ## Usage
 
@@ -72,27 +59,6 @@ Usage: nyx phone                              88F
 ```sh
 $ nyx "+41 0000 000000"
 ```
-
-## Informations
-
-* WhatsApp
-	* Type (User/Business)
-	* Name
-	* Picture
-	* About
-	* Last activity
-* Telegram
-	* Type (User/Business)
-	* ID
-	* Bot
-	* Restriction
-	* First/last name
-	* Username
-	* Verified
-	* Premium
-	* Picture
-	* Language
-	* Last activity
 
 ## FAQ
 

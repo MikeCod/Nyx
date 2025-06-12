@@ -122,7 +122,7 @@ var WhatsAppClient = null;
 
 async function main() {
 	try {
-		const pathToken = APPDATA || `${HOME}/${process.platform == 'darwin' ? 'Library/Preferences' : ".local/share"}/${prog}/auth`;
+		const pathToken = `${APPDATA || `${HOME}/${process.platform == 'darwin' ? 'Library/Preferences' : ".local/share"}`}/${prog}/auth`;
 
 		// console.log(process.argv);
 		if (process.argv.length < 3 || argv.h || argv.help || argv["?"]) {
@@ -152,7 +152,7 @@ async function main() {
 			fs.writeFileSync(
 				__dirname + "/.env",
 				fs.readFileSync(__dirname + "/.env", 'utf-8')
-					.replace(/API_TELEGRAM_TOKEN=?"?[-A-Za-z0-9+/]*={0,3}"?/g, `API_TELEGRAM_TOKEN=`),
+					.replace(/API_TELEGRAM_TOKEN=?("?[-A-Za-z0-9+/]*={0,3}"?|<base64>)/g, `API_TELEGRAM_TOKEN=`),
 				'utf-8'
 			);
 		}
@@ -302,7 +302,7 @@ async function main() {
 				if (!API_TELEGRAM_TOKEN) {
 					var env = fs.readFileSync(__dirname + "/.env", 'utf-8')
 					if (env.includes("API_TELEGRAM_TOKEN"))
-						env = env.replace(/API_TELEGRAM_TOKEN=?"?[-A-Za-z0-9+/]*={0,3}"?/g, `API_TELEGRAM_TOKEN="${client.session.save()}"`);
+						env = env.replace(/API_TELEGRAM_TOKEN=?("?[-A-Za-z0-9+/]*={0,3}"?|<base64>)/g, `API_TELEGRAM_TOKEN="${client.session.save()}"`);
 					else
 						env += `\nAPI_TELEGRAM_TOKEN="${client.session.save()}"`;
 					fs.writeFileSync(__dirname + "/.env", env, 'utf-8');
